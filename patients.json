@@ -1,0 +1,112 @@
+[
+  {
+    "patient_id": 1001,
+    "name": "Rahul Sharma",
+    "age": 28,
+    "gender": "Male",
+    "phone": "+91-9876543210",
+    "email": "rahul.sharma@example.com",
+    "blood_group": "O+",
+    "diagnosis": "Asthma",
+    "city": "Prayagraj"
+  },
+  {
+    "patient_id": 1002,
+    "name": "Priya Singh",
+    "age": 35,
+    "gender": "Female",
+    "phone": "+91-9123456780",
+    "email": "priya.singh@example.com",
+    "blood_group": "B+",
+    "diagnosis": "Type 2 Diabetes",
+    "city": "Lucknow"
+  },
+  {
+    "patient_id": 1003,
+    "name": "Arjun Kumar",
+    "age": 42,
+    "gender": "Male",
+    "phone": "+91-9988776655",
+    "email": "arjun.kumar@example.com",
+    "blood_group": "A+",
+    "diagnosis": "Hypertension",
+    "city": "Kanpur"
+  },
+  {
+    "patient_id": 1004,
+    "name": "Sneha Verma",
+    "age": 31,
+    "gender": "Female",
+    "phone": "+91-9012345678",
+    "email": "sneha.verma@example.com",
+    "blood_group": "AB+",
+    "diagnosis": "Migraine",
+    "city": "Varanasi"
+  },
+  {
+    "patient_id": 1005,
+    "name": "Aman Gupta",
+    "age": 50,
+    "gender": "Male",
+    "phone": "+91-9345678123",
+    "email": "aman.gupta@example.com",
+    "blood_group": "O-",
+    "diagnosis": "High Cholesterol",
+    "city": "Delhi"
+  },
+  {
+    "patient_id": 1006,
+    "name": "Ananya Mishra",
+    "age": 24,
+    "gender": "Female",
+    "phone": "+91-9765432109",
+    "email": "ananya.mishra@example.com",
+    "blood_group": "A-",
+    "diagnosis": "Anemia",
+    "city": "Patna"
+  },
+  {
+    "patient_id": 1007,
+    "name": "Vikram Yadav",
+    "age": 45,
+    "gender": "Male",
+    "phone": "+91-8899776655",
+    "email": "vikram.yadav@example.com",
+    "blood_group": "B-",
+    "diagnosis": "Arthritis",
+    "city": "Agra"
+  },
+  {
+    "patient_id": 1008,
+    "name": "Neha Patel",
+    "age": 38,
+    "gender": "Female",
+    "phone": "+91-9234567810",
+    "email": "neha.patel@example.com",
+    "blood_group": "O+",
+    "diagnosis": "Thyroid Disorder",
+    "city": "Ahmedabad"
+  },
+  {
+    "patient_id": 1009,
+    "name": "Rohit Das",
+    "age": 33,
+    "gender": "Male",
+    "phone": "+91-9456781230",
+    "email": "rohit.das@example.com",
+    "blood_group": "AB-",
+    "diagnosis": "Gastritis",
+    "city": "Kolkata"
+  },
+  {
+    "patient_id": 1010,
+    "name": "Kavya Reddy",
+    "age": 29,
+    "gender": "Female",
+    "phone": "+91-9567812340",
+    "email": "kavya.reddy@example.com",
+    "blood_group": "A+",
+    "diagnosis": "Vitamin D Deficiency",
+    "city": "Hyderabad"
+  }
+]
