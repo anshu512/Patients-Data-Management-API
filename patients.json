@@ -1,112 +1,112 @@
-[
-  {
-    "patient_id": 1001,
-    "name": "Rahul Sharma",
-    "age": 28,
-    "gender": "Male",
-    "phone": "+91-9876543210",
-    "email": "rahul.sharma@example.com",
-    "blood_group": "O+",
-    "diagnosis": "Asthma",
-    "city": "Prayagraj"
-  },
-  {
-    "patient_id": 1002,
-    "name": "Priya Singh",
-    "age": 35,
-    "gender": "Female",
-    "phone": "+91-9123456780",
-    "email": "priya.singh@example.com",
-    "blood_group": "B+",
-    "diagnosis": "Type 2 Diabetes",
-    "city": "Lucknow"
-  },
-  {
-    "patient_id": 1003,
-    "name": "Arjun Kumar",
-    "age": 42,
-    "gender": "Male",
-    "phone": "+91-9988776655",
-    "email": "arjun.kumar@example.com",
-    "blood_group": "A+",
-    "diagnosis": "Hypertension",
-    "city": "Kanpur"
-  },
-  {
-    "patient_id": 1004,
-    "name": "Sneha Verma",
-    "age": 31,
-    "gender": "Female",
-    "phone": "+91-9012345678",
-    "email": "sneha.verma@example.com",
-    "blood_group": "AB+",
-    "diagnosis": "Migraine",
-    "city": "Varanasi"
-  },
-  {
-    "patient_id": 1005,
-    "name": "Aman Gupta",
-    "age": 50,
-    "gender": "Male",
-    "phone": "+91-9345678123",
-    "email": "aman.gupta@example.com",
-    "blood_group": "O-",
-    "diagnosis": "High Cholesterol",
-    "city": "Delhi"
-  },
-  {
-    "patient_id": 1006,
-    "name": "Ananya Mishra",
-    "age": 24,
-    "gender": "Female",
-    "phone": "+91-9765432109",
-    "email": "ananya.mishra@example.com",
-    "blood_group": "A-",
-    "diagnosis": "Anemia",
-    "city": "Patna"
-  },
-  {
-    "patient_id": 1007,
-    "name": "Vikram Yadav",
+{
+  "P001": {
+    "name": "Rahul Desai",
+    "city": "Mumbai",
     "age": 45,
     "gender": "Male",
-    "phone": "+91-8899776655",
-    "email": "vikram.yadav@example.com",
-    "blood_group": "B-",
-    "diagnosis": "Arthritis",
-    "city": "Agra"
+    "weight": 78.5,
+    "height": 175.0,
+    "diagnosis": "Type 2 Diabetes",
+    "phoneNo": "+91-9876543210",
+    "email": "rahul.desai@example.com"
   },
-  {
-    "patient_id": 1008,
-    "name": "Neha Patel",
-    "age": 38,
+  "P002": {
+    "name": "Priya Sharma",
+    "city": "Prayagraj",
+    "age": 34,
     "gender": "Female",
-    "phone": "+91-9234567810",
-    "email": "neha.patel@example.com",
-    "blood_group": "O+",
-    "diagnosis": "Thyroid Disorder",
-    "city": "Ahmedabad"
+    "weight": 65.2,
+    "height": 162.5,
+    "diagnosis": "Mild persistent asthma",
+    "phoneNo": "+91-8765432109",
+    "email": "priya.s@example.com"
   },
-  {
-    "patient_id": 1009,
-    "name": "Rohit Das",
-    "age": 33,
+  "P003": {
+    "name": "Amit Patel",
+    "city": "Ahmedabad",
+    "age": 52,
     "gender": "Male",
-    "phone": "+91-9456781230",
-    "email": "rohit.das@example.com",
-    "blood_group": "AB-",
-    "diagnosis": "Gastritis",
-    "city": "Kolkata"
+    "weight": 82.0,
+    "height": 170.0,
+    "diagnosis": "Hypertension",
+    "phoneNo": "+91-7654321098",
+    "email": "amit.patel@example.com"
   },
-  {
-    "patient_id": 1010,
-    "name": "Kavya Reddy",
-    "age": 29,
+  "P004": {
+    "name": "Sunita Rao",
+    "city": "Bengaluru",
+    "age": 28,
     "gender": "Female",
-    "phone": "+91-9567812340",
-    "email": "kavya.reddy@example.com",
-    "blood_group": "A+",
-    "diagnosis": "Vitamin D Deficiency",
-    "city": "Hyderabad"
+    "weight": 58.0,
+    "height": 158.0,
+    "diagnosis": "Iron deficiency anemia",
+    "phoneNo": "+91-6543210987",
+    "email": "sunita.rao@example.com"
+  },
+  "P005": {
+    "name": "Vikram Singh",
+    "city": "Delhi",
+    "age": 61,
+    "gender": "Male",
+    "weight": 90.5,
+    "height": 180.0,
+    "diagnosis": "Osteoarthritis",
+    "phoneNo": "+91-5432109876",
+    "email": "vikram.singh@example.com"
+  },
+  "P006": {
+    "name": "Ananya Gupta",
+    "city": "Pune",
+    "age": 22,
+    "gender": "Female",
+    "weight": 55.0,
+    "height": 165.0,
+    "diagnosis": "Acute bronchitis",
+    "phoneNo": "+91-4321098765",
+    "email": "ananya.g@example.com"
+  },
+  "P007": {
+    "name": "Rohan Verma",
+    "city": "Kolkata",
+    "age": 39,
+    "gender": "Male",
+    "weight": 74.0,
+    "height": 172.0,
+    "diagnosis": "Gastroesophageal reflux disease",
+    "phoneNo": "+91-3210987654",
+    "email": "rohan.v@example.com"
+  },
+  "P008": {
+    "name": "Meera Reddy",
+    "city": "Hyderabad",
+    "age": 47,
+    "gender": "Female",
+    "weight": 68.5,
+    "height": 160.0,
+    "diagnosis": "Hypothyroidism",
+    "phoneNo": "+91-2109876543",
+    "email": "meera.reddy@example.com"
+  },
+  "P009": {
+    "name": "Kabir Das",
+    "city": "Chennai",
+    "age": 31,
+    "gender": "Male",
+    "weight": 70.0,
+    "height": 178.0,
+    "diagnosis": "Migraine",
+    "phoneNo": "+91-1098765432",
+    "email": "kabir.das@example.com"
+  },
+  "P010": {
+    "name": "Sneha Joshi",
+    "city": "Jaipur",
+    "age": 55,
+    "gender": "Female",
+    "weight": 72.0,
+    "height": 155.0,
+    "diagnosis": "Osteoporosis",
+    "phoneNo": "+91-9988776655",
+    "email": "sneha.joshi@example.com"
   }
-]
+}
