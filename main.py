@@ -1,7 +1,8 @@
 from fastapi import FastAPI, Path, HTTPException, Query
+from fastapi.responses import JSONResponse
 import json
-from pydantic import BaseModel, Field, computed_field
-from typing import Annotated, Literal, Emailstr
+from pydantic import BaseModel, Field, computed_field, EmailStr
+from typing import Annotated, Literal
 
 app = FastAPI()
 
@@ -15,7 +16,7 @@ class Patient(BaseModel):
     weight: Annotated[float, Field(..., gt = 0, description='weight of the patient in kg.')]
     diagnosis: Annotated[str, Field(..., descriotion='Disease of the patient')]
     phone: str = Field(..., pattern=r"^\+91-\d{10}$",description="Indian phone number in +91-XXXXXXXXXX format")
-    email: Emailstr = Field( description='Email of the patient')
+    email: EmailStr = Field( description='Email of the patient')
     
     @computed_field
     @property
@@ -39,6 +40,10 @@ def load_data():
         data = json.load(f)
     return data
 
+def save_data(data):
+    with open("patients.json", 'w') as f:
+        json.dump(data, f)
+        
 @app.get("/")
 def home():
     return {'message': "Patients Management API"}
@@ -83,3 +88,17 @@ def sort_patient(
         reverse=(orderby == "desc")
     )
     return patients_list
+
+@app.post('/create')
+def create_patient(patient: Patient):
+    #load existing data
+    data = load_data()
+    
+    #checing existing patient
+    if patient.id in data:
+        raise HTTPException(status_code=400, detail='Patient already exist')
+    else:
+        data[patient.id]=patient.model_dump(exclude = ['id'])
+        save_data(data)
+        
+    return JSONResponse(status_code=201, content={'message':'Patient Created Successfully'})
