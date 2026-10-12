@@ -2,7 +2,7 @@ from fastapi import FastAPI, Path, HTTPException, Query
 from fastapi.responses import JSONResponse
 import json
 from pydantic import BaseModel, Field, computed_field, EmailStr
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Optional
 
 app = FastAPI()
 
@@ -10,18 +10,18 @@ class Patient(BaseModel):
     id: Annotated[str, Field(..., description='Id of patient')]
     name: Annotated[str, Field(..., description='name of patient')]
     city: Annotated[str, Field(..., description='City of person')]
-    age: Annotated[int, Field(..., gt = 0, description='Age of the patient')]
-    gender: Annotated[Literal['Male','Female','others'], Field(..., description='Gender of the person')]
-    height: Annotated[float, Field(..., gt = 0, description='Height of the patient in meters.')]
-    weight: Annotated[float, Field(..., gt = 0, description='weight of the patient in kg.')]
-    diagnosis: Annotated[str, Field(..., descriotion='Disease of the patient')]
-    phone: str = Field(..., pattern=r"^\+91-\d{10}$",description="Indian phone number in +91-XXXXXXXXXX format")
-    email: EmailStr = Field( description='Email of the patient')
+    age: Annotated[int, Field(..., gt=0, description='Age of the patient')]
+    gender: Annotated[Literal['Male', 'Female', 'Others'], Field(..., description='Gender of the person')] # Fixed capitalization
+    height: Annotated[float, Field(..., gt=0, description='Height of the patient in meters.')]
+    weight: Annotated[float, Field(..., gt=0, description='weight of the patient in kg.')]
+    diagnosis: Annotated[str, Field(..., description='Disease of the patient')] # Fixed 'descriotion' typo
+    phone: str = Field(..., pattern=r"^\+91-\d{10}$", description="Indian phone number in +91-XXXXXXXXXX format")
+    email: EmailStr = Field(description='Email of the patient')
     
     @computed_field
     @property
     def bmi(self) -> float:
-        bmi = round((self.weight / self.height**2),2)
+        bmi = round((self.weight / self.height**2), 2)
         return bmi
     
     @computed_field
@@ -33,7 +33,14 @@ class Patient(BaseModel):
             return "Normal"
         else:
             return "Over-weight"
-        
+
+class Patientupdate(BaseModel):
+    name: Annotated[Optional[str], Field(default=None)]
+    age: Annotated[Optional[int], Field(default=None, gt=0)]
+    gender: Annotated[Optional[Literal['Male', 'Female', 'Others']], Field(default=None)]
+    weight: Annotated[Optional[float], Field(default=None, gt=0)]
+    height: Annotated[Optional[float], Field(default=None, gt=0)]
+    city: Annotated[Optional[str], Field(default=None)]
 
 def load_data():
     with open("patients.json", 'r') as f:
@@ -42,8 +49,8 @@ def load_data():
 
 def save_data(data):
     with open("patients.json", 'w') as f:
-        json.dump(data, f)
-        
+        json.dump(data, f, indent=4) # Added indent for readable JSON saving
+
 @app.get("/")
 def home():
     return {'message': "Patients Management API"}
@@ -61,7 +68,6 @@ def view():
 def patient(patient_id: str = Path(..., description="Id of the Patient in DB (e.g., P001)")):
     data = load_data()
     
-    # Since data is a dictionary, we can just check if the ID exists as a key
     if patient_id in data:
         return data[patient_id]
         
@@ -80,7 +86,6 @@ def sort_patient(
     
     data = load_data()
     
-    # Convert the dictionary values into a list so they can be sorted
     patients_list = list(data.values())
     
     patients_list.sort(
@@ -91,14 +96,39 @@ def sort_patient(
 
 @app.post('/create')
 def create_patient(patient: Patient):
-    #load existing data
     data = load_data()
     
-    #checing existing patient
     if patient.id in data:
-        raise HTTPException(status_code=400, detail='Patient already exist')
+        raise HTTPException(status_code=400, detail='Patient already exists')
     else:
-        data[patient.id]=patient.model_dump(exclude = ['id'])
+        # Changed to set syntax for exclude
+        data[patient.id] = patient.model_dump(exclude={'id'}) 
         save_data(data)
         
-    return JSONResponse(status_code=201, content={'message':'Patient Created Successfully'})
+    return JSONResponse(status_code=201, content={'message': 'Patient Created Successfully'})
+
+@app.put('/edit/{patient_id}')
+def update_patient(patient_id: str, patient_update: Patientupdate):
+    data = load_data()
+    if patient_id not in data:
+        raise HTTPException(status_code=404, detail='Patient did not exist.')
+    
+    existing_patient_info = data[patient_id]
+    updated_patient_info = patient_update.model_dump(exclude_unset=True)
+    
+    # FIXED: Added .items() to iterate dictionary
+    for key, value in updated_patient_info.items(): 
+        existing_patient_info[key] = value 
+        
+    # FIXED: Added quotes around 'id'
+    existing_patient_info['id'] = patient_id 
+    
+    patient_pydantic_obj = Patient(**existing_patient_info)
+    
+    # FIXED: Changed exclude syntax to a set
+    existing_patient_info = patient_pydantic_obj.model_dump(exclude={'id'}) 
+    data[patient_id] = existing_patient_info
+    
+    save_data(data)
+    
+    return JSONResponse(status_code=200, content={'message': 'Patient Updated'})
